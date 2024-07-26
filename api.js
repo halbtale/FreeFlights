@@ -1,8 +1,8 @@
 const axios = require('axios');
 
 /**
- * @param {{day: number; month: number}} goTripDate
- * @param {{day: number; month: number}} returnTripDate
+ * @param {{day: number; month: number; year: number}} goTripDate
+ * @param {{day: number; month: number; year: number}} returnTripDate
  * @returns {Promise<FlightResponse>}
  */
 module.exports.getFlights = async (goTripDate, returnTripDate) => {
@@ -21,7 +21,7 @@ module.exports.getFlights = async (goTripDate, returnTripDate) => {
 				},
 				dates: {
 					'@type': 'date',
-					year: 2024,
+					year: goTripDate.year,
 					month: goTripDate.month,
 					day: goTripDate.day
 				}
@@ -36,7 +36,7 @@ module.exports.getFlights = async (goTripDate, returnTripDate) => {
 				},
 				dates: {
 					'@type': 'date',
-					year: 2024,
+					year: returnTripDate.year,
 					month: returnTripDate.month,
 					day: returnTripDate.day
 				}
@@ -60,7 +60,7 @@ module.exports.getFlights = async (goTripDate, returnTripDate) => {
 			pragma: 'no-cache',
 			priority: 'u=1, i',
 			referer:
-				'https://www.skyscanner.it/trasporti/voli-da/veni/240731/240807/?adults=1&adultsv2=1&cabinclass=economy&children=0&childrenv2=&inboundaltsenabled=false&infants=0&originentityid=27547373&outboundaltsenabled=false&preferdirects=true&ref=home&rtn=1',
+				'https://www.skyscanner.it/trasporti/voli-da/veni/250101/250101/?adultsv2=1&cabinclass=economy&childrenv2=&ref=home&rtn=1&preferdirects=true&outboundaltsenabled=false&inboundaltsenabled=false',
 			'sec-ch-ua':
 				'"Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"',
 			'sec-ch-ua-mobile': '?0',
