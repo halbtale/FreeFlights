@@ -85,6 +85,18 @@ module.exports.getFlights = async (goTripDate, returnTripDate) => {
 		},
 		data: JSON.stringify(data)
 	};
-	const response = await axios.request(config);
-	return response.data;
+	try {
+		const response = await axios.request(config);
+		return response.data;
+	} catch (error) {
+		if (error.response) {
+			console.log(error.response.data);
+			console.log(error.response.status);
+		} else if (error.request) {
+			console.log(error.request);
+		} else {
+			console.log('Error', error.message);
+		}
+		process.exit(1);
+	}
 };
